@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+}
+    </style>
+    <title>Contact Us</title>
+</head>
+<body>
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('dashboard') }}"><span class="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">Ganesh Designmatics</span></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ url_for('dashboard') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('contact') }}">Contact Us</a>
+        </li>
+      </ul>
+      <div class="ml-auto flex items-center justify-between">
+        {% if loggedin %}
+        <h4>Welcome <span  class="font-semibold text-blue-500">{{ username }}</span></h4>
+        <span class="mx-2 text-gray-400">|</span>
+        <a class="mr-2 text-sm hover:text-red-500" href="{{ url_for('logout') }}">Log Out</a>
+        {% else %}
+        <a class="mr-2 text-sm hover:text-green-500" href="{{ url_for('login') }}">Log In</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="h-screen">
+        <section class="text-gray-600 body-font relative">
+          <form method="POST" action="{{ url_for('contact') }}">
+            <div class="container px-5 py-24 mx-auto">
+              <div class="flex flex-col text-center w-full mb-12">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Feel free to contact us for any queries.</p>
+              </div>
+              <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <div class="flex flex-wrap -m-2">
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                      <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                  </div>
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                      <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                  </div>
+                  <div class="p-2 w-full">
+                    <div class="relative">
+                      <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                      <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                    </div>
+                  </div>
+                  <div class="p-2 w-full">
+                    <input type="submit" value="Send" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" />
+                  </div>
+                  {% if msg %}
+                  <div class="text-center w-full text-green-500">Message sent</div>
+                  {% endif %}
+                  <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+                    <p class="text-indigo-500">ganeshdesingmatics@gmail.com</p>
+                    <p class="leading-normal my-5">4th Avenue, Indiranagar, Bengaluru - 560038
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          </section>
+    </div>
+
+    <!-- FAQ --> 
+<div class="max-w-screen-xl mx-auto p-8">
+  <h2 class="text-3xl font-extrabold leading-9 border-b-2 border-gray-100 text-gray-900 mb-12">
+      FAQs
+  </h2>
+  <ul class="flex items-start gap-8 flex-wrap">
+      <li class="w-2/5">
+          <p class="text-lg font-medium leading-6 text-gray-900">
+             How to book an order?
+          </p>
+          <p class="mt-2">
+              <p class="text-base leading-6 text-gray-500">
+                You can send a mail to us using the contact page, and we will respond as soon as we get the message, then we can discuss about the project.
+              </p>
+          </p>
+      </li>
+      <li class="w-2/5">
+          <p class="text-lg font-medium leading-6 text-gray-900">
+              What is the price for logo design?
+          </p>
+          <p class="mt-2">
+              <p class="text-base leading-6 text-gray-500">
+              The price of a design depends completely upon what a customer wants and on what scale, you can enquire more about the price by writing a mail to us in the contact page. 
+              </p>
+          </p>
+      </li>
+      <li class="w-2/5">
+          <p class="text-lg font-medium leading-6 text-gray-900">
+              What to do if I am unsure about design?
+          </p>
+          <p class="mt-2">
+              <p class="text-base leading-6 text-gray-500">
+                  When you book a session with us our team of expert graphics design will get in touch with you and will enquire about what you like in a design and what not, then our team of experts and experienced designers will come up with the best designs for you. 
+              </p>
+          </p>
+      </li>
+      <li class="w-2/5">
+          <p class="text-lg font-medium leading-6 text-gray-900">
+             Why should I order from your company?
+          </p>
+          <p class="mt-2">
+              <p class="text-base leading-6 text-gray-500">
+                 We provide best work, because our team is trained in this field and are expert in it, we provide the best designs with the best price in market.
+              </p>
+          </p>
+      </li>
+      <li class="w-2/5">
+          <p class="text-lg font-medium leading-6 text-gray-900">
+              Do you make logo and banner designs for Social media sites?
+          </p>
+          <p class="mt-2">
+              <p class="text-base leading-6 text-gray-500"> 
+                Yes we do, contact us to know more about it.
+              </p>
+          </p>
+      </li>
+      <li class="w-2/5">
+          <p class="text-lg font-medium leading-6 text-gray-900">
+              Is there any discount?
+          </p>
+          <p class="mt-2">
+              <p class="text-base leading-6 text-gray-500">
+                  We give special discount during festive season and during offers, make sure to visit our site often so that you dont miss the offer.
+              </p>
+          </p>
+      </li>
+  </ul>
+</div>
+
+    <!-- footer -->
+    <footer class="text-gray-600 body-font mt-20">
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      >
+        <a
+          class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+        >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <a href="{{ url_for('dashboard') }}" class="ml-3 text-xl">Ganesh Designmatics</a>
+        </a>
+        <p
+          class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+        >
+          © 2022 SJEC CODERS —
+          <a
+            href=""
+            class="text-gray-600 ml-1"
+            rel="noopener noreferrer"
+            target="_blank"
+            >@ganeshdesignmatics</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+        >
+          <a class="text-gray-500">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+  </div>
+
+
+
+     <!-- tailwindcss -->
+     <script src="https://cdn.tailwindcss.com"></script>  
+     <!-- bootstrap -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
