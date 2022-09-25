@@ -6,8 +6,10 @@
   "use": "@vercel/python"
   }
   ],
-"routes": [
+"routes": [ 
+  {
   "src": "/(.*)",
   "dest": "/"
+  }
 ]
 }
