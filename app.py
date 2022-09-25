@@ -130,7 +130,7 @@ def contact():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        msg = Message('Hello from the other side!', sender = email, recipients = ['ganeshdesignmatics@gmail.com'])
+        msg = Message('Client Message', sender = email, recipients = ['ganeshdesignmatics@gmail.com'])
         msg.body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
         mail.send(msg)
         return render_template("contact.html", msg=True)
