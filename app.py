@@ -18,8 +18,8 @@ app.config['SECRET_KEY'] = 'secretkey'
 Session(app)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'ganeshdesignmatics@gmail.com'
-app.config['MAIL_PASSWORD'] = 'xikzdaurqznxrptq'
+app.config['MAIL_USERNAME'] = 'secretmail'
+app.config['MAIL_PASSWORD'] = 'secretpassword'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True  
 mail = Mail(app)
