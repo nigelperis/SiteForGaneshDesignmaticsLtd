@@ -28,7 +28,7 @@ This Flask application serves as the website for Ganesh Designmatics Ltd. It inc
 
 2. Install dependencies: `pip install -r requirements.txt`
 
-3. 3. Set up MySQL database:
+3. Set up MySQL database:
 
 - Create a MySQL database.
 - Update the `SQLALCHEMY_DATABASE_URI` in `app.py` with your database connection string.
