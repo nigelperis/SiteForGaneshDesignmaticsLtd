@@ -9,19 +9,21 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
+
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = "filesystem"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'secretkey'
-Session(app)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'secretmail'
 app.config['MAIL_PASSWORD'] = 'secretpassword'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True  
+
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+Session(app)
 mail = Mail(app)
 
 
